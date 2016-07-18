@@ -15,22 +15,24 @@ class Core
         /**
          *  Load Translations
          */
-        load_plugin_textdomain(
-            SIMPLEDOC_SLUG,
-            false,
-            basename(dirname(__FILE__)) . '/languages'
-        );
+        load_plugin_textdomain(SIMPLEDOC_SLUG, false, SIMPLEDOC_LANGUAGES);
     }
 
 
+    /**
+     *  Registered in the main plugin file
+     */
     public static function activation()
     {
         // Check for import etc..
     }
 
 
+    /**
+     *  Registered in the main plugin file
+     */
     public static function uninstall()
     {
-
+        // Remove options etc...
     }
 }

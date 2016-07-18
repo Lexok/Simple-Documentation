@@ -66,3 +66,15 @@ use \SimpleDocumentation\Core;
  *  Plugin Initialisation
  */
 Core::init();
+
+
+/**
+ *  Register Activation Hook
+ */
+register_activation_hook(__FILE__, array(Core, 'activation'));
+
+
+/**
+ *  Register Uninstall Hook
+ */
+register_uninstall_hook(__FILE__, array(Core, 'uninstall'));

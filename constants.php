@@ -27,3 +27,8 @@ define('SIMPLEDOC_INCLUDES', SIMPLEDOC_ROOT . '/includes');
  *  Plugin Templates Folder Path
  */
 define('SIMPLEDOC_TEMPLATES', SIMPLEDOC_ROOT . '/templates');
+
+/**
+ *  Plugin Languages Folder path
+ */
+define('SIMPLEDOC_LANGUAGES', SIMPLEDOC_ROOT . '/languages');
