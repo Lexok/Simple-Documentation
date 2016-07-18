@@ -1,0 +1,35 @@
+{
+  "name": "Simple-Documentation",
+  "version": "1.0.0",
+  "description": "Simple-Documentation ====================",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "./node_modules/.bin/gulp lint",
+    "build": "./node_modules/.bin/gulp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mathieuhays/Simple-Documentation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mathieuhays/Simple-Documentation/issues"
+  },
+  "homepage": "https://github.com/mathieuhays/Simple-Documentation#readme",
+  "devDependencies": {
+    "eslint": "^3.1.0",
+    "eslint-config-standard": "^5.3.5",
+    "eslint-plugin-promise": "^2.0.0",
+    "eslint-plugin-standard": "^2.0.0",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^3.0.1",
+    "gulp-phpcs": "^1.1.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.5.4",
+    "gulp-util": "^3.0.7",
+    "run-sequence": "^1.2.2"
+  }
+}
