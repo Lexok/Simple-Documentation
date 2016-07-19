@@ -15,7 +15,7 @@ class Core
         /**
          *  Load Translations
          */
-        load_plugin_textdomain(SIMPLEDOC_SLUG, false, SIMPLEDOC_LANGUAGES);
+        load_plugin_textdomain(SIMPLEDOC_SLUG, false, plugin_basename(SIMPLEDOC_ROOT) . '/languages');
     }
 
 
@@ -24,7 +24,11 @@ class Core
      */
     public static function activation()
     {
-        // Check for import etc..
+        /**
+         *  If we detect the tables we run the import and then delete them.
+         *  Maybe create a backup in a log file just in case
+         */
+
     }
 
 
@@ -33,6 +37,9 @@ class Core
      */
     public static function uninstall()
     {
-        // Remove options etc...
+        /**
+         *  Remove Options & Posts
+         *  Also try to remove tables in case someone failed to run the import
+         */
     }
 }
