@@ -14,6 +14,21 @@ define('SIMPLEDOC_VERSION', '1.3.0');
 define('SIMPLEDOC_SLUG', 'simpledocumentation');
 
 /**
+ *  Post Type Slug
+ */
+define('SIMPLEDOC_POST_TYPE', SIMPLEDOC_SLUG);
+
+/**
+ *  Capability Slug for Viewing Simple Documentation Items
+ */
+define('SIMPLEDOC_CAP_VIEW', SIMPLEDOC_SLUG . '_view');
+
+/**
+ *  Capability Slug for Managing Simple Documentation Items
+ */
+define('SIMPLEDOC_CAP_MANAGE', SIMPLEDOC_SLUG . '_manage');
+
+/**
  *  Plugin Root Folder Path
  */
 define('SIMPLEDOC_ROOT', dirname(__FILE__));

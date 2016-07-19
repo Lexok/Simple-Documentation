@@ -5,8 +5,21 @@
 
 namespace SimpleDocumentation;
 
+use SimpleDocumentation/Utils;
+
 class Core
 {
+    /**
+     *  Get Class
+     *
+     *  @return {string}
+     */
+    public static function getClass()
+    {
+        return __CLASS__;
+    }
+
+
     /**
      *  Plugin initialisation
      */
@@ -16,6 +29,12 @@ class Core
          *  Load Translations
          */
         load_plugin_textdomain(SIMPLEDOC_SLUG, false, plugin_basename(SIMPLEDOC_ROOT) . '/languages');
+
+
+        /**
+         *  Register Post Type
+         */
+        self::registerPostType();
     }
 
 
@@ -25,10 +44,35 @@ class Core
     public static function activation()
     {
         /**
-         *  If we detect the tables we run the import and then delete them.
-         *  Maybe create a backup in a log file just in case
+         *  Assign View Capability To Suitable Default WordPress Roles
+         *
+         *  @filter simpledocumentation_default_view_roles
          */
+        $view_roles = apply_filters(Utils::slugIt('_default_view_roles'), array(
+            'administrator',
+            'editor',
+            'author',
+            'contributor'
+        ));
 
+        Utils::assignCapToRoles(SIMPLEDOC_CAP_VIEW, $view_roles);
+
+
+        /**
+         *  Assign Manage Capability To Suitable Default WordPress Roles
+         *
+         *  @filter simpledocumentation_default_manage_roles
+         */
+        $manage_roles = apply_filters(Utils::slugIt('_default_manage_roles'), array(
+            'administrator'
+        ));
+
+        Utils::assignCapToRoles(SIMPLEDOC_CAP_MANAGE, $manage_roles);
+
+
+        /**
+         *  Detect if the custom tables exist, if it's the case start the migration
+         */
     }
 
 
@@ -41,5 +85,45 @@ class Core
          *  Remove Options & Posts
          *  Also try to remove tables in case someone failed to run the import
          */
+
+        /**
+         *  Remove Capabilities from all roles
+         */
+        $wp_roles = wp_roles();
+
+        foreach ($wp_roles->role_objects as $role) {
+            if ($role->has_cap(SIMPLEDOC_CAP_VIEW)) {
+                $role->remove_cap(SIMPLEDOC_CAP_VIEW);
+            }
+
+            if ($role->has_cap(SIMPLE_DOC_CAP_MANAGE)) {
+                $role->remove_cap(SIMPLEDOC_CAP_MANAGE);
+            }
+        }
+    }
+
+
+    /**
+     *  Register Post Type
+     */
+    public static function registerPostType()
+    {
+        // register_post_type(SIMPLEDOC_POST_TYPE, array(
+        //     'description' => 'Client Documentation Plugin Post Type. Internal use only.',
+        //     /**
+        //      *  use this post type for internal use only. Shouldn't appear on the admin
+        //      *  or being queryable from the front end.
+        //      */
+        //     'public' => false,
+        //     /**
+        //      *  Redundant because of the public parameter but here so its explicit
+        //      */
+        //     'exclude_from_search' => true,
+        //     'publicly_queryable' => false,
+        //     'show_ui' => false,
+        //     'show_in_nav_menus' => false,
+        //     'show_in_menu' => false,
+        //     'show_in_admin_bar' => false
+        // ));
     }
 }

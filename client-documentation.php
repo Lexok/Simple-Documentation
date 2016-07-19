@@ -58,7 +58,8 @@ require 'constants.php';
 /**
  *  Plugin's Classes
  */
-require SIMPLEDOC_INCLUDES . '/core.php';
+require SIMPLEDOC_INCLUDES . '/core.class.php';
+require SIMPLEDOC_INCLUDES . '/utils.class.php';
 
 use \SimpleDocumentation\Core;
 
@@ -71,10 +72,10 @@ Core::init();
 /**
  *  Register Activation Hook
  */
-register_activation_hook(__FILE__, array(Core, 'activation'));
+register_activation_hook(__FILE__, array(Core::getClass(), 'activation'));
 
 
 /**
  *  Register Uninstall Hook
  */
-register_uninstall_hook(__FILE__, array(Core, 'uninstall'));
+register_uninstall_hook(__FILE__, array(Core::getClass(), 'uninstall'));
