@@ -14,6 +14,11 @@ define('SIMPLEDOC_VERSION', '1.3.0');
 define('SIMPLEDOC_SLUG', 'simpledocumentation');
 
 /**
+ *  Text Domain (used for translation)
+ */
+define('SIMPLEDOC_TEXTDOMAIN', SIMPLEDOC_SLUG);
+
+/**
  *  Post Type Slug
  */
 define('SIMPLEDOC_POST_TYPE', SIMPLEDOC_SLUG);
@@ -47,3 +52,10 @@ define('SIMPLEDOC_TEMPLATES', SIMPLEDOC_ROOT . '/templates');
  *  Plugin Languages Folder path
  */
 define('SIMPLEDOC_LANGUAGES', SIMPLEDOC_ROOT . '/languages');
+
+/**
+ *  Debug Mode For Simple Documentation
+ */
+if (!defined('SIMPLEDOC_DEBUG')) {
+    define('SIMPLEDOC_DEBUG', false);
+}

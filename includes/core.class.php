@@ -5,7 +5,7 @@
 
 namespace SimpleDocumentation;
 
-use SimpleDocumentation/Utils;
+use \SimpleDocumentation\Utils;
 
 class Core
 {
@@ -108,22 +108,37 @@ class Core
      */
     public static function registerPostType()
     {
-        // register_post_type(SIMPLEDOC_POST_TYPE, array(
-        //     'description' => 'Client Documentation Plugin Post Type. Internal use only.',
-        //     /**
-        //      *  use this post type for internal use only. Shouldn't appear on the admin
-        //      *  or being queryable from the front end.
-        //      */
-        //     'public' => false,
-        //     /**
-        //      *  Redundant because of the public parameter but here so its explicit
-        //      */
-        //     'exclude_from_search' => true,
-        //     'publicly_queryable' => false,
-        //     'show_ui' => false,
-        //     'show_in_nav_menus' => false,
-        //     'show_in_menu' => false,
-        //     'show_in_admin_bar' => false
-        // ));
+        $params = array(
+            'label' => __('Simple Documentation', SIMPLEDOC_TEXTDOMAIN),
+            'description' => 'Client Documentation Plugin Post Type. Internal use only.',
+            'public' => false,
+            'exclude_from_search' => true,
+            'publicly_queryable' => false,
+            'show_ui' => false,
+            'show_in_nav_menus' => false,
+            'show_in_menu' => false,
+            'show_in_admin_bar' => false,
+            'has_archive' => false,
+            'rewrite' => false,
+            'query_var' => false,
+            'show_in_rest' => false,
+            'hierarchical' => false,
+            'supports' => array(
+                'title',
+                'editor',
+                'author',
+                'thumbnail',
+                'revisions'
+            ),
+            'can_export' => true
+        );
+
+        if (SIMPLEDOC_DEBUG) {
+            $params['show_ui'] = true;
+            $params['show_in_menu'] = true;
+            $params['show_in_admin_bar'] = true;
+        }
+
+        register_post_type(SIMPLEDOC_POST_TYPE, $params);
     }
 }
