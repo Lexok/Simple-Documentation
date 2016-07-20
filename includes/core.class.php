@@ -133,6 +133,9 @@ class Core
             'can_export' => true
         );
 
+        /**
+         *  Show Post Type in the Admin when Debugging
+         */
         if (SIMPLEDOC_DEBUG) {
             $params['show_ui'] = true;
             $params['show_in_menu'] = true;
