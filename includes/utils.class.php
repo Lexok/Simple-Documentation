@@ -38,4 +38,20 @@ class Utils
             }
         }
     }
+
+
+    /**
+     *  Similar functionality as get_template_part
+     *  but based on the templates folder
+     *
+     *  @param  {string} $name - filename without extension relative to ./templates
+     */
+    public static function getTemplate($name)
+    {
+        $full_path = SIMPLEDOC_TEMPLATES . '/' . $name . '.php';
+
+        if (file_exists($full_path)) {
+            require $full_path;
+        }
+    }
 }

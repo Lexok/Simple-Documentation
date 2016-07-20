@@ -5,8 +5,13 @@
 
 namespace SimpleDocumentation;
 
+use \SimpleDocumentation\Utils;
+
 class Dashboard
 {
+    /**
+     *  Setup the dashboard widget if the conditions are met
+     */
     public static function maybeSetup()
     {
         /**
@@ -24,6 +29,7 @@ class Dashboard
             return false;
         }
 
+
         add_action('wp_dashboard_setup', array(__CLASS__, 'register'));
 
         if (is_multisite()) {
@@ -39,7 +45,7 @@ class Dashboard
     {
         wp_add_dashboard_widget(
             SIMPLEDOC_SLUG,
-            'Simple Documentation Dashboard',
+            __('Documentation', 'simpledocumentation'),
             array(__CLASS__, 'render')
         );
     }
@@ -64,6 +70,9 @@ class Dashboard
      */
     public static function render()
     {
-        print('<p>Simple Documentation</p>');
+        /**
+         *  Load dashboard view
+         */
+        Utils::getTemplate('dashboard');
     }
 }

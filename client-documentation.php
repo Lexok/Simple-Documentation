@@ -8,7 +8,7 @@
 	Author: Mathieu Hays
 	Author URI: https://mathieuhays.co.uk
 	License: GPL2
-	Text Domain: simple-documentation
+	Text Domain: simpledocumentation
 	Domain Path: /languages
 
 	#-----------------------------------------------------------------------
@@ -60,6 +60,7 @@ require 'constants.php';
  */
 require SIMPLEDOC_INCLUDES . '/core.class.php';
 require SIMPLEDOC_INCLUDES . '/dashboard.class.php';
+require SIMPLEDOC_INCLUDES . '/pages.class.php';
 require SIMPLEDOC_INCLUDES . '/utils.class.php';
 
 use \SimpleDocumentation\Core;

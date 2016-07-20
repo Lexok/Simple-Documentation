@@ -7,6 +7,7 @@ namespace SimpleDocumentation;
 
 use \SimpleDocumentation\Utils;
 use \SimpleDocumentation\Dashboard;
+use \SimpleDocumentation\Pages;
 
 class Core
 {
@@ -29,7 +30,7 @@ class Core
         /**
          *  Load Translations
          */
-        load_plugin_textdomain(SIMPLEDOC_SLUG, false, plugin_basename(SIMPLEDOC_ROOT) . '/languages');
+        add_action('plugins_loaded', array(__CLASS__, 'loadTextDomain'));
 
 
         /**
@@ -42,6 +43,21 @@ class Core
          *  Register Dashboard if necessary
          */
         Dashboard::maybeSetup();
+
+
+        /**
+         *  Register Plugin page
+         */
+        Pages::setup();
+    }
+
+
+    /**
+     *  Load text domain (translations)
+     */
+    public static function loadTextDomain()
+    {
+        load_plugin_textdomain('simpledocumentation', false, plugin_basename(SIMPLEDOC_ROOT) . '/languages/');
     }
 
 
@@ -75,6 +91,7 @@ class Core
         ));
 
         Utils::assignCapToRoles(SIMPLEDOC_CAP_MANAGE, $manage_roles);
+        Utils::assignCapToRoles(SIMPLEDOC_CAP_FULL_VIEW, $manage_roles);
 
 
         /**
@@ -116,7 +133,7 @@ class Core
     public static function registerPostType()
     {
         $params = array(
-            'label' => __('Simple Documentation', SIMPLEDOC_TEXTDOMAIN),
+            'label' => __('Simple Documentation', 'simpledocumentation'),
             'description' => 'Client Documentation Plugin Post Type. Internal use only.',
             'public' => false,
             'exclude_from_search' => true,
@@ -150,5 +167,16 @@ class Core
         }
 
         register_post_type(SIMPLEDOC_POST_TYPE, $params);
+    }
+
+
+    /**
+     *  Get Plugin Label
+     *
+     *  @return {string}
+     */
+    public static function getLabel()
+    {
+        return 'Simple Documentation';
     }
 }

@@ -14,11 +14,6 @@ define('SIMPLEDOC_VERSION', '1.3.0');
 define('SIMPLEDOC_SLUG', 'simpledocumentation');
 
 /**
- *  Text Domain (used for translation)
- */
-define('SIMPLEDOC_TEXTDOMAIN', SIMPLEDOC_SLUG);
-
-/**
  *  Post Type Slug
  */
 define('SIMPLEDOC_POST_TYPE', SIMPLEDOC_SLUG);
@@ -27,6 +22,12 @@ define('SIMPLEDOC_POST_TYPE', SIMPLEDOC_SLUG);
  *  Capability Slug for Viewing Simple Documentation Items
  */
 define('SIMPLEDOC_CAP_VIEW', SIMPLEDOC_SLUG . '_view');
+
+/**
+ *  Capability Slug for Viewing the Full Screen Documentation View
+ *  (not only the dashboard)
+ */
+define('SIMPLEDOC_CAP_FULL_VIEW', SIMPLEDOC_SLUG . '_full_view');
 
 /**
  *  Capability Slug for Managing Simple Documentation Items
