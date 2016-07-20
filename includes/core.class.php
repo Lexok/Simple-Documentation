@@ -6,6 +6,7 @@
 namespace SimpleDocumentation;
 
 use \SimpleDocumentation\Utils;
+use \SimpleDocumentation\Dashboard;
 
 class Core
 {
@@ -35,6 +36,12 @@ class Core
          *  Register Post Type
          */
         self::registerPostType();
+
+
+        /**
+         *  Register Dashboard if necessary
+         */
+        Dashboard::maybeSetup();
     }
 
 

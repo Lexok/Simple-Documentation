@@ -59,6 +59,7 @@ require 'constants.php';
  *  Plugin's Classes
  */
 require SIMPLEDOC_INCLUDES . '/core.class.php';
+require SIMPLEDOC_INCLUDES . '/dashboard.class.php';
 require SIMPLEDOC_INCLUDES . '/utils.class.php';
 
 use \SimpleDocumentation\Core;
