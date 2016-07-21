@@ -27,7 +27,7 @@ class Pages
         /**
          *  Load Assets
          */
-        add_action('admin_init', array(__CLASS__, 'addAdminScripts'));
+        add_action('admin_init', array(__CLASS__, 'loadAssets'));
     }
 
 
@@ -87,9 +87,9 @@ class Pages
 
 
     /**
-     *  Add Admin Script
+     *  Load JavaScript
      */
-    public static function addAdminScripts()
+    public static function loadAssets()
     {
         global $pagenow;
 
@@ -112,7 +112,7 @@ class Pages
             'ajaxUrl' => admin_url('admin-ajax.php'),
             'fieldsMissing' => __('Following fields are missing :', 'simpledocumentation'),
             'isMissing' => __('is missing !', 'simpledocumentation'),
-            'itemNumber' => 10, // @todo 
+            'itemNumber' => 10, // @todo
             'viewList' => __('View List', 'simpledocumentation'),
             'orderSaved' => __('Order saved', 'simpledocumentation'),
             'loading' => __('Loading', 'simpledocumentation'),
@@ -124,11 +124,17 @@ class Pages
             'addNew' => __('Add new', 'simpledocumentation')
         );
 
-        wp_enqueue_script('jquery-ui-sortable');
-
+        /**
+         *  JS
+         */
+        // wp_enqueue_script('jquery-ui-sortable');
         wp_enqueue_script(SIMPLEDOC_SLUG . '_js', SIMPLEDOC_URI . '/assets/js/simpledocumentation.js', array('jquery'), SIMPLEDOC_VERSION);
-        wp_localize_script(SIMPLEDOC_SLUG . '_js', 'ajax_object', $local);
+        wp_localize_script(SIMPLEDOC_SLUG . '_js', 'simpledocumentation_object', $local);
+        // wp_enqueue_media();
 
-        wp_enqueue_media();
+        /**
+         *  CSS
+         */
+        wp_enqueue_style(SIMPLEDOC_SLUG . '_css', SIMPLEDOC_URI . '/assets/css/main.css', false, SIMPLEDOC_VERSION);
     }
 }

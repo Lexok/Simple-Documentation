@@ -2,6 +2,74 @@
 //  Simple Documentation
 //
 
-.simpledocumentation {
-    color: #333;
+$border-color: #ccc;
+$background-color: #f9f9f9;
+
+.simpledoc-wrap {
+    box-sizing: border-box;
+
+    *,
+    *:before,
+    *:after {
+        box-sizing: inherit;
+    }
+}
+
+.simpledoc-list {
+    max-width: 960px;
+
+    &:after {
+        content: " ";
+        display: table;
+        clear: both;
+    }
+}
+
+.simpledoc-list__item {
+    background: $background-color;
+    border: 1px solid $border-color;
+    // margin: 2px;
+    padding: 15px;
+    position: relative;
+    margin-bottom: 3px;
+    border-radius: 3px;
+}
+
+.simpledoc-preview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 150px;
+    background: $border-color;
+}
+
+.simpledoc-title {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+.simpledoc-list--featured {
+    .simpledoc-list__item {
+        padding: 20px;
+        padding-left: 170px;
+        float: left;
+        width: 49%;
+        margin-right: 1%;
+        margin-bottom: 1%;
+        border-radius: 5px;
+    }
+
+    .simpledoc-title {
+        font-size: 18px;
+    }
+}
+
+
+.simpledoc-content {
+
+    p {
+        margin: .75em 0 0;
+    }
 }
