@@ -40,6 +40,11 @@ define('SIMPLEDOC_CAP_MANAGE', SIMPLEDOC_SLUG . '_manage');
 define('SIMPLEDOC_ROOT', dirname(__FILE__));
 
 /**
+ *  Plugin Base URL
+ */
+define('SIMPLEDOC_URI', plugins_url('', __FILE__));
+
+/**
  *  Plugin Includes Folder Path
  */
 define('SIMPLEDOC_INCLUDES', SIMPLEDOC_ROOT . '/includes');
