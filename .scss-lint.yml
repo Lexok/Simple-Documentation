@@ -1,0 +1,19 @@
+#
+#   SCSS Linter Config
+#
+
+scss_files: 'scss/**/*.scss'
+# exclude: 'scss/bower_components/**'
+
+linters:
+    Indentation:
+        severity: warning
+        width: 4
+    SelectorFormat:
+        convention: hyphenated_BEM
+    NestingDepth:
+        max_depth: 4
+    SelectorDepth:
+        max_depth: 4
+    PseudoElement:
+        enabled: false
